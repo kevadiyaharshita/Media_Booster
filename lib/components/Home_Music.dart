@@ -1,19 +1,17 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:media_player/controller/FavouriteSong_Controller.dart';
 import 'package:media_player/controller/Video_Controller.dart';
 import 'package:media_player/utils/Audio_Songs.dart';
 import 'package:media_player/controller/PageController.dart';
 import 'package:media_player/utils/My_Routes.dart';
 import 'package:provider/provider.dart';
-
 import '../controller/Audio_Controller.dart';
 import '../controller/CarouselController.dart';
 
 class HomeMusic extends StatelessWidget {
   const HomeMusic({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -39,17 +37,19 @@ class HomeMusic extends StatelessWidget {
                     builder: (context, pro, _) {
                   return GestureDetector(
                     onTap: () {
-                      Provider.of<Carousel_Controller>(context, listen: false)
-                          .setCurrentIndex(0);
                       pro.setCurrentIndex(0);
                       pro.setAllSong(movie: e);
-
                       Provider.of<AudioController>(context, listen: false)
                           .openSongs(path: pro.getAllSongs[0].path);
 
-                      // Provider.of<AudioController>(context).openSongs(path: path)
-                      Navigator.of(context)
-                          .pushNamed(MyRoutes.MovieAudio, arguments: e);
+                      Provider.of<AudioController>(context, listen: false)
+                          .setStatus();
+
+                      pro.setSelectedMovieName(movieName: e);
+
+                      Provider.of<Page_Controller>(context, listen: false)
+                          .changePage(2);
+                      FavouriteController.isTappaed = false;
                     },
                     child: Container(
                       height: 180,
@@ -67,11 +67,8 @@ class HomeMusic extends StatelessWidget {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
                                 image: DecorationImage(
-                                  image: NetworkImage(
-                                    Images_Movies[e],
-                                  ),
-                                  fit: BoxFit.fill,
-                                ),
+                                    image: AssetImage(Images_Movies[e]),
+                                    fit: BoxFit.cover),
                               ),
                             ),
                           ),
@@ -92,7 +89,13 @@ class HomeMusic extends StatelessWidget {
           SizedBox(
             height: 15,
           ),
-          Text("Indie Music"),
+          Text(
+            "Indie Music Videos",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+            ),
+          ),
           SizedBox(
             height: 5,
           ),
@@ -120,11 +123,8 @@ class HomeMusic extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             image: DecorationImage(
-                              image: NetworkImage(
-                                'https://cokestudio.coke2home.com/assets/img/mobil_khalasi.png',
-                              ),
-                              fit: BoxFit.fill,
-                            ),
+                                image: AssetImage('assets/images/khalasi.png'),
+                                fit: BoxFit.cover),
                           ),
                         ),
                       ),
@@ -136,42 +136,6 @@ class HomeMusic extends StatelessWidget {
                   ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  ImagePicker picker = ImagePicker();
-                  XFile? file;
-                  showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      title: Text("Pick Video"),
-                      content: Text("Choose the sourse for your Video"),
-                      actions: [
-                        Consumer<VideoController>(builder: (context, p, _) {
-                          return ElevatedButton(
-                            onPressed: () async {
-                              file = await picker.pickVideo(
-                                  source: ImageSource.gallery);
-
-                              if (file != null) {
-                                p.setVideoFromGallary(video: File(file!.path));
-                              }
-
-                              Navigator.of(context)
-                                  .pushNamed(MyRoutes.gallaryVideo);
-                            },
-                            child: Text("Gallary"),
-                          );
-                        }),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: Text("Camara"),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-                child: Text("Choose Video"),
-              ),
             ],
           )
         ],
@@ -179,3 +143,40 @@ class HomeMusic extends StatelessWidget {
     );
   }
 }
+
+// ElevatedButton(
+//   onPressed: () {
+//     ImagePicker picker = ImagePicker();
+//     XFile? file;
+//     showDialog(
+//       context: context,
+//       builder: (context) => AlertDialog(
+//         title: Text("Pick Video"),
+//         content: Text("Choose the sourse for your Video"),
+//         actions: [
+//           Consumer<VideoController>(builder: (context, p, _) {
+//             return ElevatedButton(
+//               onPressed: () async {
+//                 file = await picker.pickVideo(
+//                     source: ImageSource.gallery);
+//
+//                 if (file != null) {
+//                   p.setVideoFromGallary(video: File(file!.path));
+//                 }
+//
+//                 Navigator.of(context)
+//                     .pushNamed(MyRoutes.gallaryVideo);
+//               },
+//               child: Text("Gallary"),
+//             );
+//           }),
+//           ElevatedButton(
+//             onPressed: () {},
+//             child: Text("Camara"),
+//           ),
+//         ],
+//       ),
+//     );
+//   },
+//   child: Text("Choose Video"),
+// ),

@@ -43,6 +43,8 @@ dependencies:
   chewie: ^1.7.1
   image_picker: ^1.0.4
   marquee: ^2.2.3
+  feature_discovery: ^0.14.1
+  like_button: ^2.0.5
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +76,7 @@ flutter:
   assets:
     - assets/audio/
     - assets/video/
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

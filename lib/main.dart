@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:media_player/controller/Audio_Controller.dart';
+import 'package:media_player/controller/BottomButtonController.dart';
 import 'package:media_player/controller/CarouselController.dart';
 import 'package:media_player/controller/DateTimeController.dart';
+import 'package:media_player/controller/FavouriteSong_Controller.dart';
 import 'package:media_player/utils/My_Routes.dart';
 import 'package:media_player/views/screens/AllVideo_Page.dart';
 import 'package:media_player/views/screens/Gallary_Video.dart';
@@ -29,6 +31,12 @@ void main() {
       ),
       ChangeNotifierProvider(
         create: (context) => VideoController(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => BottomButtonController(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => FavouriteController(),
       )
     ],
     child: MyApp(),
