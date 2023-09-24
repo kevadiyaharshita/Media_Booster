@@ -32,9 +32,7 @@ class FavouriteController extends ChangeNotifier {
       // print("AllSongtitle : ${allFavourite}");
       Audio_Songs.forEach(
         (e) {
-          // print("Condition entered");
           if (e['title'] == title) {
-            // print("Condition true");
             Movie_Modal mm = Movie_Modal.fromMap(data: e);
             allSongs.add(mm);
             print("Map Data : ${e['movie']}");

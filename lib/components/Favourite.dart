@@ -82,6 +82,8 @@ class SettingPage extends StatelessWidget {
                 Gap(270),
                 Consumer<FavouriteController>(builder: (context, pro, _) {
                   return Container(
+                    height: 310,
+                    // color: Colors.pink,
                     padding: EdgeInsets.all(10),
                     child: SingleChildScrollView(
                       child: Column(

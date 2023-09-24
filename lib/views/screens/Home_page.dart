@@ -130,7 +130,25 @@ class HomePage extends StatelessWidget {
                   // Round Button
                   DescribedFeatureOverlay(
                     featureId: 'feature1',
-                    tapTarget: Icon(Icons.place),
+                    tapTarget: Container(
+                      height: 65,
+                      width: 65,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: LinearGradient(
+                          colors: [
+                            Color(0xffF56D6F),
+                            Color(0xffD5405D),
+                          ],
+                          end: Alignment.bottomCenter,
+                          begin: Alignment.topCenter,
+                        ),
+                      ),
+                      child: Icon(
+                        Icons.play_arrow_rounded,
+                        size: 30,
+                      ),
+                    ),
                     targetColor: Colors.white,
                     textColor: Colors.white,
                     backgroundColor: Color(0xffD5405D),
