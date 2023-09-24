@@ -11,50 +11,52 @@ class VideoController extends ChangeNotifier {
   VideoPlayerController? videoPlayerController1;
   File? video;
 
-  VideoController() {
+  // VideoController() {
+  //   videoPlayerController = VideoPlayerController.asset(
+  //     'assets/video/khalasi.mp4',
+  //     videoPlayerOptions: VideoPlayerOptions(),
+  //   )..initialize().then((value) {
+  //       chewieController = ChewieController(
+  //         videoPlayerController: videoPlayerController!,
+  //         aspectRatio: videoPlayerController!.value.aspectRatio,
+  //         autoPlay: true,
+  //       );
+  //       notifyListeners();
+  //     });
+  // }
+
+  initVideo({required String path}) {
     videoPlayerController = VideoPlayerController.asset(
-      'assets/video/khalasi.mp4',
+      path,
       videoPlayerOptions: VideoPlayerOptions(),
-    )..initialize().then((value) {
-        chewieController = ChewieController(
-          videoPlayerController: videoPlayerController!,
-          aspectRatio: videoPlayerController!.value.aspectRatio,
-          autoPlay: true,
-        );
-        notifyListeners();
-      });
+    )..initialize().then(
+        (value) {
+          chewieController = ChewieController(
+            videoPlayerController: videoPlayerController!,
+            aspectRatio: videoPlayerController!.value.aspectRatio,
+            autoPlay: true,
+          );
+          notifyListeners();
+        },
+      );
   }
 
-  initVideo() {
-    videoPlayerController = VideoPlayerController.asset(
-      'assets/video/khalasi.mp4',
-      videoPlayerOptions: VideoPlayerOptions(),
-    )..initialize().then((value) {
-        chewieController = ChewieController(
-          videoPlayerController: videoPlayerController!,
-          aspectRatio: videoPlayerController!.value.aspectRatio,
-          autoPlay: true,
-        );
-        notifyListeners();
-      });
-  }
+  // setVideoFromGallary({required File video}) {
+  //   this.video = video;
+  //   notifyListeners();
+  // }
 
-  setVideoFromGallary({required File video}) {
-    this.video = video;
-    notifyListeners();
-  }
-
-  gallaryVideoPlay() {
-    videoPlayerController1 = VideoPlayerController.file(
-      video!,
-      videoPlayerOptions: VideoPlayerOptions(),
-    )..initialize().then((value) {
-        chewieController1 = ChewieController(
-          videoPlayerController: videoPlayerController1!,
-          aspectRatio: videoPlayerController1!.value.aspectRatio,
-          autoPlay: true,
-        );
-        notifyListeners();
-      });
-  }
+  // gallaryVideoPlay() {
+  //   videoPlayerController1 = VideoPlayerController.file(
+  //     video!,
+  //     videoPlayerOptions: VideoPlayerOptions(),
+  //   )..initialize().then((value) {
+  //       chewieController1 = ChewieController(
+  //         videoPlayerController: videoPlayerController1!,
+  //         aspectRatio: videoPlayerController1!.value.aspectRatio,
+  //         autoPlay: true,
+  //       );
+  //       notifyListeners();
+  //     });
+  // }
 }

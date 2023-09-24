@@ -13,6 +13,26 @@ class Carousel_Controller extends ChangeNotifier {
   String selectedMovieName = '';
   List<Movie_Modal> _allFavouriteSong = [];
   int _favCurrent = 0;
+  String albumSongName = '';
+  bool _isAllSongs = false;
+
+  setIsAllSong(bool val) {
+    _isAllSongs = val;
+    notifyListeners();
+  }
+
+  get getIsAllSong {
+    return _isAllSongs;
+  }
+
+  setAlbumSongName({required String name}) {
+    albumSongName = name;
+    notifyListeners();
+  }
+
+  get getAlbumSongName {
+    return albumSongName;
+  }
 
   setSelectedMovieName({required String movieName}) {
     selectedMovieName = movieName;
@@ -42,7 +62,6 @@ class Carousel_Controller extends ChangeNotifier {
 
   setAllSong({required String movie}) {
     // print("Called..");
-
     _allSongs.clear();
     Audio_Songs.map((e) {
       if (e['movie'] == movie) {
@@ -52,6 +71,18 @@ class Carousel_Controller extends ChangeNotifier {
     }).toList();
 
     // notifyListeners();
+  }
+
+  setAllOverSongs() {
+    // print("Called..");
+    _allSongs.clear();
+    Audio_Songs.map((e) {
+      Movie_Modal m = Movie_Modal.fromMap(data: e);
+      _allSongs.add(m);
+    }).toList();
+
+    notifyListeners();
+    _isAllSongs = false;
   }
 
   String setSinger({required List<String> name}) {

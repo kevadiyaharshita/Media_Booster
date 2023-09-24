@@ -7,7 +7,6 @@ import 'package:marquee/marquee.dart';
 import 'package:media_player/controller/CarouselController.dart';
 import 'package:media_player/controller/FavouriteSong_Controller.dart';
 import 'package:provider/provider.dart';
-
 import '../controller/Audio_Controller.dart';
 import '../controller/BottomButtonController.dart';
 
@@ -34,6 +33,22 @@ class CurrentPlaySongs extends StatelessWidget {
                 pro.setSelectedMovieName(movieName: 'Bramhastra');
               }
               pro.setAllSong(movie: MovieName);
+              if (pro.getAlbumSongName != '') {
+                pro.getAllSongs.forEach((e) {
+                  if (e.title == pro.getAlbumSongName) {
+                    pro.setCurrentIndex(pro.getAllSongs.indexOf(e));
+                    pro.setAlbumSongName(name: '');
+                  }
+                });
+              }
+              print(
+                  '================================================${pro.getIsAllSong}');
+              if (pro.getIsAllSong) {
+                print(
+                    "Entered.......................................................................................");
+                pro.setAllOverSongs();
+                // pro.setIsAllSong(false);
+              }
               return SizedBox(
                 height: MediaQuery.of(context).size.height,
                 width: w,
@@ -113,7 +128,8 @@ class CurrentPlaySongs extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                     child: Image.network(
-                                        pro.getAllSongs[index].image,
+                                        pro.getAllSongs[pro.getCurrentIndex]
+                                            .image,
                                         fit: BoxFit.fill),
                                   ),
                                   const SizedBox(height: 20),
@@ -161,7 +177,7 @@ class CurrentPlaySongs extends StatelessWidget {
                               ),
                               Gap(15),
                               Text(
-                                '${pro.getAllSongs[pro.getCurrentIndex].title}(From "${MovieName}")',
+                                '${pro.getAllSongs[pro.getCurrentIndex].title}(From "${pro.getAllSongs[pro.getCurrentIndex].movie}")',
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(
                                     fontSize: 22.0,
@@ -321,7 +337,10 @@ class CurrentPlaySongs extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                     child: Image.network(
-                                        pro.getallFavouriteSong[index].image,
+                                        pro
+                                            .getallFavouriteSong[
+                                                pro.getfavCurrent]
+                                            .image,
                                         fit: BoxFit.fill),
                                   ),
                                   const SizedBox(height: 20),

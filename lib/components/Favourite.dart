@@ -97,6 +97,9 @@ class SettingPage extends StatelessWidget {
                                 Provider.of<Carousel_Controller>(context,
                                         listen: false)
                                     .setfavCurrent(index: index);
+                                Provider.of<AudioController>(context,
+                                        listen: false)
+                                    .openSongs(path: pro.allSongs[index].path);
                               },
                               child: Container(
                                 width: w,

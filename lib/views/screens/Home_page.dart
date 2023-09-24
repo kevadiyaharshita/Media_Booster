@@ -32,11 +32,17 @@ class HomePage extends StatelessWidget {
                 : AppBar(
                     title: Consumer<DateTimeController>(
                       builder: (context, p, _) {
-                        return Text(
-                          p.greetings[p.getIndex],
-                          style: TextStyle(
-                              fontSize: 26, fontWeight: FontWeight.bold),
-                        );
+                        return (pro.getIndex == 1)
+                            ? Text(
+                                "Audio song",
+                                style: TextStyle(
+                                    fontSize: 26, fontWeight: FontWeight.bold),
+                              )
+                            : Text(
+                                p.greetings[p.getIndex],
+                                style: TextStyle(
+                                    fontSize: 26, fontWeight: FontWeight.bold),
+                              );
                       },
                     ),
                   ),
@@ -53,7 +59,7 @@ class HomePage extends StatelessWidget {
                       : Colors.transparent),
               alignment: Alignment.center,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   //home
                   GestureDetector(
@@ -88,7 +94,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
 
-                  // audio
+                  // // audio
                   GestureDetector(
                     onTap: () {
                       pro.changePage(1);
@@ -291,7 +297,7 @@ class HomePage extends StatelessWidget {
                     }),
                   ),
 
-                  //  video
+                  // //  video
                   GestureDetector(
                     onTap: () {
                       pro.changePage(3);
