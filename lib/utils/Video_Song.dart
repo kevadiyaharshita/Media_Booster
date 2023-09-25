@@ -82,3 +82,5 @@ List<String> videoImages = [
   'https://i.ytimg.com/vi/5Eqb_-j3FDA/maxresdefault.jpg',
   'https://i.ytimg.com/vi/nbaCERYDkzs/maxresdefault.jpg',
 ];
+
+List<int> indx = [5, 2, 6, 3];

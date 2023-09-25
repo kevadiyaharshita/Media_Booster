@@ -28,7 +28,14 @@ class VideoPage extends StatelessWidget {
             items: List.generate(
                 videos.length,
                 (index) => GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Provider.of<VideoController>(context, listen: false)
+                            .initVideo(path: Video_Song[indx[index]]['path']);
+                        Navigator.of(context).pushNamed(
+                          MyRoutes.allVideoPage,
+                          arguments: Video_Song[indx[index]],
+                        );
+                      },
                       child: Container(
                         margin: EdgeInsets.all(10),
                         decoration: BoxDecoration(

@@ -14,12 +14,10 @@ class DateTimeController extends ChangeNotifier {
   int? _index = 0;
 
   DateTimeController() {
-    print(".....................");
     checkTime();
   }
 
   checkTime() {
-    print("...........Calledd..........");
     date = DateTime.now();
     if (date.hour >= 4 && date.hour < 12) {
       _index = 0;

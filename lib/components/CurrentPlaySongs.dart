@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -60,6 +62,23 @@ class CurrentPlaySongs extends StatelessWidget {
                       child: Image.network(
                         '${pro.getAllSongs[pro.getCurrentIndex].image}',
                         fit: BoxFit.fill,
+                      ),
+                    ),
+                    // Container(
+                    //   height: h,
+                    //   width: w,
+                    //   color: Colors.black54.withOpacity(0.5),
+                    // ),
+                    ClipRect(
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(
+                          sigmaX: 3,
+                          sigmaY: 3,
+                        ),
+                        child: Container(
+                          width: w,
+                          height: h,
+                        ),
                       ),
                     ),
                     Positioned(
@@ -268,6 +287,18 @@ class CurrentPlaySongs extends StatelessWidget {
                       child: Image.network(
                         '${pro.getallFavouriteSong[pro.getfavCurrent].image}',
                         fit: BoxFit.fill,
+                      ),
+                    ),
+                    ClipRect(
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(
+                          sigmaX: 3,
+                          sigmaY: 3,
+                        ),
+                        child: Container(
+                          width: w,
+                          height: h,
+                        ),
                       ),
                     ),
                     Positioned(

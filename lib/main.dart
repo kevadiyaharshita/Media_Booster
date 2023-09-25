@@ -11,6 +11,7 @@ import 'package:media_player/views/screens/AllVideo_Page.dart';
 import 'package:media_player/views/screens/Gallary_Video.dart';
 import 'package:media_player/views/screens/Home_page.dart';
 import 'package:media_player/views/screens/Movie_AudioPage.dart';
+import 'package:media_player/views/screens/Splash_Screen.dart';
 import 'package:provider/provider.dart';
 
 import 'controller/PageController.dart';
@@ -62,9 +63,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         brightness: Brightness.dark,
       ),
-      initialRoute: MyRoutes.home,
+      initialRoute: MyRoutes.SplashScreen,
       routes: {
         MyRoutes.home: (context) => HomePage(),
+        MyRoutes.SplashScreen: (context) => SplashScreen(),
         MyRoutes.MovieAudio: (context) => MovieAudioPage(),
         MyRoutes.allVideoPage: (context) => AllVideoPage(),
         // MyRoutes.gallaryVideo: (context) => GallaryVideo(),
