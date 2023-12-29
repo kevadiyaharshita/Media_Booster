@@ -7,19 +7,22 @@ player, video player, and carousel slider functionalities along with a tab bar v
 designed to enhance the knowledge and skills of IT students in mobile app development using
 Flutter.</p>
 <b>Project Objectives:</b>
-- To develop a media player application using the Flutter framework.
-- To implement an audio player with playback controls.
-- To implement a video player with playback controls.
-- To implement a carousel slider functionality that enables users to swipe between multiple audio
-  files and multiple video files.
-- To implement a tab bar view that enables users to navigate between audio player and video
-   player page.
-- To implement a detail page of each audio and video file for play it with playback controls.
-- To optimize the application for performance and user experience.
-- To enhance the knowledge and skills of IT students in mobile app development using Flutter.
+<ul>
+<li>To develop a media player application using the Flutter framework.</li>
+<li>To implement an audio player with playback controls.</li>
+<li>To implement a video player with playback controls.</li>
+<li>To implement a carousel slider functionality that enables users to swipe between multiple audio
+  files and multiple video files.</li>
+<li>To implement a tab bar view that enables users to navigate between audio player and video
+   player page.</li>
+<li>To implement a detail page of each audio and video file for play it with playback controls.</li>
+<li>To optimize the application for performance and user experience.</li>
+<li>To enhance the knowledge and skills of IT students in mobile app development using Flutter.</li>
+  </ul>
 <b>Project Technologies:</b>
-- Dart language
-- Flutter framework with MVC and Provider architecture
+<ul>
+<li>Dart language</li>
+<li>Flutter framework with MVC and Provider architecture</li></ul>
 
 
 https://github.com/kevadiyaharshita/Media_Booster/assets/133105068/e0dc7c48-ac10-4ff0-a93f-bd887e31be2a
